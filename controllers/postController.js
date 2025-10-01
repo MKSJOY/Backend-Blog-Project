@@ -91,6 +91,6 @@ export const deletePost = asyncHandler(async (req, res, next) => {
   if (post.author.toString() !== req.user._id.toString())
     return next(new ErrorResponse('Not authorized to delete this post', 401));
 
-  await post.remove();
+  await post.deleteOne();
   res.status(200).json({ success: true, data: {} });
 });
